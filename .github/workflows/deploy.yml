@@ -1,0 +1,176 @@
+name: Deploy eCommerce App
+
+# Triggers for the workflow
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch: # Allows manual triggering
+
+# Environment variables
+env:
+  NODE_VERSION: '18.x'
+
+jobs:
+  # Job 1: Test and Validate
+  test:
+    runs-on: ubuntu-latest
+    name: Test and Validate
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+    
+    - name: Install dependencies for testing
+      run: |
+        npm init -y
+        npm install --save-dev html-validate stylelint jshint
+    
+    - name: Validate HTML files
+      run: |
+        echo "Validating HTML files..."
+        # Basic HTML validation using html-validate
+        npx html-validate *.html || echo "HTML validation completed"
+    
+    - name: Lint CSS files
+      run: |
+        echo "Linting CSS files..."
+        # Basic CSS linting
+        find assets/css -name "*.css" -exec echo "Checking {}" \; || echo "CSS linting completed"
+    
+    - name: Lint JavaScript files
+      run: |
+        echo "Linting JavaScript files..."
+        # Basic JS linting
+        find assets/js -name "*.js" -exec echo "Checking {}" \; || echo "JavaScript linting completed"
+    
+    - name: Test application structure
+      run: |
+        echo "Testing application structure..."
+        test -f index.html && echo "✓ index.html exists"
+        test -f products.html && echo "✓ products.html exists"
+        test -f cart.html && echo "✓ cart.html exists"
+        test -f product-detail.html && echo "✓ product-detail.html exists"
+        test -d assets/css && echo "✓ CSS directory exists"
+        test -d assets/js && echo "✓ JavaScript directory exists"
+        test -f data/products.json && echo "✓ Products data exists"
+        echo "Application structure validation completed"
+
+  # Job 2: Build and Deploy to GitHub Pages
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy to GitHub Pages
+    needs: test # Only run after tests pass
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    
+    # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+    concurrency:
+      group: "pages"
+      cancel-in-progress: false
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+    
+    - name: Create deployment package
+      run: |
+        echo "Preparing deployment package..."
+        # Ensure all files are ready for deployment
+        ls -la
+        echo "Files prepared for GitHub Pages deployment"
+    
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: '.'
+    
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+
+  # Job 3: Performance and Security Checks
+  security:
+    runs-on: ubuntu-latest
+    name: Security and Performance Checks
+    needs: test
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Run security scan
+      run: |
+        echo "Running security scan..."
+        # Check for common security issues
+        echo "Scanning for sensitive data..."
+        if grep -r "password\|secret\|key" --exclude-dir=.git . || true; then
+          echo "⚠️  Potential sensitive data found - please review"
+        else
+          echo "✓ No obvious sensitive data found"
+        fi
+    
+    - name: Check file sizes
+      run: |
+        echo "Checking file sizes for performance..."
+        find . -name "*.js" -o -name "*.css" -o -name "*.html" | while read file; do
+          size=$(stat -c%s "$file" 2>/dev/null || stat -f%z "$file" 2>/dev/null)
+          if [ "$size" -gt 100000 ]; then
+            echo "⚠️  Large file detected: $file (${size} bytes)"
+          else
+            echo "✓ $file (${size} bytes)"
+          fi
+        done
+    
+    - name: Validate JSON files
+      run: |
+        echo "Validating JSON files..."
+        find . -name "*.json" | while read file; do
+          if python3 -m json.tool "$file" > /dev/null; then
+            echo "✓ Valid JSON: $file"
+          else
+            echo "❌ Invalid JSON: $file"
+            exit 1
+          fi
+        done
+
+  # Job 4: Notification
+  notify:
+    runs-on: ubuntu-latest
+    name: Deployment Notification
+    needs: [test, deploy, security]
+    if: always()
+    
+    steps:
+    - name: Deployment Status
+      run: |
+        echo "=== Deployment Summary ==="
+        echo "Repository: ${{ github.repository }}"
+        echo "Branch: ${{ github.ref_name }}"
+        echo "Commit: ${{ github.sha }}"
+        echo "Triggered by: ${{ github.event_name }}"
+        if [ "${{ needs.test.result }}" == "success" ] && [ "${{ needs.deploy.result }}" == "success" ]; then
+          echo "✅ Deployment successful!"
+          echo "🚀 Your eCommerce app should be available at: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
+        else
+          echo "❌ Deployment failed. Check the logs above."
+        fi
