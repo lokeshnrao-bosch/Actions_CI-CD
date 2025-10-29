@@ -1,0 +1,32 @@
+<!-- Gaming Laptop SVG -->
+<svg class="product-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="laptopGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Base -->
+  <rect x="30" y="120" width="140" height="50" rx="8" fill="url(#laptopGradient)" stroke="#fff" stroke-width="2"/>
+  <!-- Screen -->
+  <rect x="40" y="30" width="120" height="90" rx="8" fill="url(#laptopGradient)" stroke="#fff" stroke-width="2"/>
+  <!-- Screen display -->
+  <rect x="50" y="40" width="100" height="70" rx="4" fill="#000" opacity="0.8"/>
+  <!-- Keyboard area -->
+  <rect x="40" y="130" width="120" height="30" rx="4" fill="#000" opacity="0.4"/>
+  <!-- Keyboard keys -->
+  <g fill="#fff" opacity="0.6">
+    <rect x="50" y="140" width="8" height="6" rx="1"/>
+    <rect x="62" y="140" width="8" height="6" rx="1"/>
+    <rect x="74" y="140" width="8" height="6" rx="1"/>
+    <rect x="86" y="140" width="8" height="6" rx="1"/>
+    <rect x="98" y="140" width="8" height="6" rx="1"/>
+    <rect x="110" y="140" width="8" height="6" rx="1"/>
+    <rect x="122" y="140" width="8" height="6" rx="1"/>
+    <rect x="134" y="140" width="8" height="6" rx="1"/>
+  </g>
+  <!-- Trackpad -->
+  <rect x="80" y="150" width="40" height="20" rx="3" fill="#333" opacity="0.7"/>
+  <!-- Logo -->
+  <circle cx="100" cy="75" r="8" fill="#00f2fe" opacity="0.8"/>
+</svg>

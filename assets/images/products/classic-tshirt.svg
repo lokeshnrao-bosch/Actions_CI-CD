@@ -1,0 +1,25 @@
+<!-- Professional T-Shirt SVG -->
+<svg class="product-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="tshirtGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- T-shirt body -->
+  <path d="M 60 70 L 60 160 L 140 160 L 140 70 Z" fill="url(#tshirtGradient)" stroke="#fff" stroke-width="2"/>
+  <!-- T-shirt sleeves -->
+  <path d="M 40 70 L 60 70 L 60 100 L 40 110 Z" fill="url(#tshirtGradient)" stroke="#fff" stroke-width="2"/>
+  <path d="M 140 70 L 160 70 L 160 110 L 140 100 Z" fill="url(#tshirtGradient)" stroke="#fff" stroke-width="2"/>
+  <!-- Neckline -->
+  <path d="M 80 50 Q 100 40 120 50 L 120 70 L 80 70 Z" fill="url(#tshirtGradient)" stroke="#fff" stroke-width="2"/>
+  <!-- Neckline opening -->
+  <path d="M 85 55 Q 100 50 115 55 L 115 65 L 85 65 Z" fill="none" stroke="#fff" stroke-width="2"/>
+  <!-- Fabric texture -->
+  <g opacity="0.3">
+    <line x1="70" y1="80" x2="130" y2="80" stroke="#fff" stroke-width="0.5"/>
+    <line x1="70" y1="90" x2="130" y2="90" stroke="#fff" stroke-width="0.5"/>
+    <line x1="70" y1="100" x2="130" y2="100" stroke="#fff" stroke-width="0.5"/>
+    <line x1="70" y1="110" x2="130" y2="110" stroke="#fff" stroke-width="0.5"/>
+  </g>
+</svg>

@@ -1,0 +1,239 @@
+/* Non-copyrighted product images using CSS gradients and data URIs */
+
+/* High-quality gradient backgrounds for products */
+.product-image-gradient {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* Smartphone gradient image */
+.smartphone-image {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+}
+
+.smartphone-image::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 80%;
+    background: linear-gradient(180deg, #000 0%, #333 100%);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.smartphone-image::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 65%;
+    background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+    border-radius: 15px;
+}
+
+/* Headphones gradient image */
+.headphones-image {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    position: relative;
+}
+
+.headphones-image::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 15px;
+    background: linear-gradient(90deg, #333 0%, #666 50%, #333 100%);
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.headphones-image::after {
+    content: '';
+    position: absolute;
+    top: 35%;
+    left: 20%;
+    width: 25%;
+    height: 40%;
+    background: radial-gradient(circle, #333 0%, #666 100%);
+    border-radius: 50%;
+    box-shadow: 
+        0 8px 20px rgba(0,0,0,0.3),
+        inset 0 0 20px rgba(255,255,255,0.1);
+}
+
+.headphones-image::after {
+    box-shadow: 
+        0 8px 20px rgba(0,0,0,0.3),
+        inset 0 0 20px rgba(255,255,255,0.1),
+        60% 0 0 0 #333; /* Right ear cup */
+}
+
+/* Coffee maker gradient image */
+.coffee-maker-image {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    position: relative;
+}
+
+.coffee-maker-image::before {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(180deg, #333 0%, #666 50%, #333 100%);
+    border-radius: 8px 8px 20px 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.coffee-maker-image::after {
+    content: '';
+    position: absolute;
+    top: 35%;
+    left: 55%;
+    transform: translateX(-50%);
+    width: 35%;
+    height: 25%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+    border-radius: 4px;
+}
+
+/* Laptop gradient image */
+.laptop-image {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    position: relative;
+}
+
+.laptop-image::before {
+    content: '';
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 40%;
+    background: linear-gradient(180deg, #333 0%, #666 100%);
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.laptop-image::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%;
+    height: 25%;
+    background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.2);
+}
+
+/* Watch gradient image */
+.watch-image {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    position: relative;
+}
+
+.watch-image::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 30%;
+    background: linear-gradient(135deg, #333 0%, #666 100%);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.watch-image::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    height: 20%;
+    background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+    border-radius: 15px;
+}
+
+/* T-shirt gradient image */
+.tshirt-image {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    position: relative;
+}
+
+.tshirt-image::before {
+    content: '';
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 60%;
+    background: linear-gradient(180deg, #4a90e2 0%, #357abd 100%);
+    clip-path: polygon(20% 0%, 80% 0%, 85% 15%, 100% 15%, 100% 100%, 0% 100%, 0% 15%, 15% 15%);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Book gradient image */
+.book-image {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    position: relative;
+}
+
+.book-image::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 70%;
+    background: linear-gradient(90deg, #2c3e50 0%, #34495e 10%, #ecf0f1 10%, #ecf0f1 100%);
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* Animated shimmer effect */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.product-image-gradient:hover::before {
+    animation: shimmer 2s infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .product-image-gradient {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-image-gradient {
+        height: 160px;
+    }
+}

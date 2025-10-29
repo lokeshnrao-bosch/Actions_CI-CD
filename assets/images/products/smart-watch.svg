@@ -1,0 +1,28 @@
+<!-- Smart Watch SVG -->
+<svg class="product-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="watchGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Watch band top -->
+  <rect x="85" y="40" width="30" height="40" rx="15" fill="url(#watchGradient)" opacity="0.8"/>
+  <!-- Watch band bottom -->
+  <rect x="85" y="120" width="30" height="40" rx="15" fill="url(#watchGradient)" opacity="0.8"/>
+  <!-- Watch case -->
+  <rect x="70" y="75" width="60" height="50" rx="25" fill="url(#watchGradient)" stroke="#fff" stroke-width="3"/>
+  <!-- Watch screen -->
+  <rect x="80" y="85" width="40" height="30" rx="15" fill="#000" opacity="0.9"/>
+  <!-- Watch face elements -->
+  <circle cx="100" cy="100" r="2" fill="#00f2fe"/>
+  <line x1="100" y1="100" x2="100" y2="90" stroke="#00f2fe" stroke-width="2"/>
+  <line x1="100" y1="100" x2="108" y2="100" stroke="#4facfe" stroke-width="1"/>
+  <!-- Digital crown -->
+  <rect x="130" y="95" width="8" height="10" rx="4" fill="url(#watchGradient)"/>
+  <!-- Watch lugs -->
+  <rect x="75" y="70" width="10" height="8" rx="2" fill="url(#watchGradient)"/>
+  <rect x="115" y="70" width="10" height="8" rx="2" fill="url(#watchGradient)"/>
+  <rect x="75" y="122" width="10" height="8" rx="2" fill="url(#watchGradient)"/>
+  <rect x="115" y="122" width="10" height="8" rx="2" fill="url(#watchGradient)"/>
+</svg>
